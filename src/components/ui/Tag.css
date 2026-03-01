@@ -1,0 +1,16 @@
+.card-tag {
+  display: inline-block;
+  font-size: 0.58rem;
+  font-weight: 800;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  padding: 0.2rem 0.6rem;
+  border-radius: 100px;
+}
+
+.tag-cat-campeonato    { background: rgba(201,168,76,0.18);  color: var(--oro);    border: 1px solid rgba(201,168,76,0.35); }
+.tag-cat-subcampeonato { background: rgba(192,192,192,0.12); color: #c0c0c0;       border: 1px solid rgba(192,192,192,0.25); }
+.tag-cat-individual    { background: rgba(11,85,173,0.25);   color: #80b8ff;       border: 1px solid rgba(11,85,173,0.4); }
+.tag-cat-participacion { background: rgba(91,91,91,0.25);    color: #aaa;          border: 1px solid rgba(91,91,91,0.35); }
+.tag-disc-americano    { background: rgba(11,85,173,0.2);    color: #80b8ff;       border: 1px solid rgba(11,85,173,0.35); }
+.tag-disc-flag         { background: rgba(40,168,112,0.2);   color: #6de8b0;       border: 1px solid rgba(40,168,112,0.35); }

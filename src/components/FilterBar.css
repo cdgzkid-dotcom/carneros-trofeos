@@ -1,0 +1,57 @@
+.filters-wrap {
+  position: relative;
+  z-index: 10;
+  padding: 1.5rem 2rem 0;
+  display: flex;
+  justify-content: center;
+}
+
+.filter-row {
+  display: flex;
+  gap: 0.5rem;
+  overflow-x: auto;
+  padding-bottom: 4px;
+}
+
+@media (min-width: 640px) {
+  .filter-row {
+    flex-wrap: wrap;
+    overflow-x: visible;
+    justify-content: center;
+    padding-bottom: 0;
+  }
+}
+
+.filter-btn {
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 700;
+  font-size: 0.7rem;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  padding: 0.42rem 0.95rem;
+  border: 1.5px solid rgba(255,255,255,0.12);
+  background: transparent;
+  color: rgba(255,255,255,0.5);
+  border-radius: 100px;
+  cursor: pointer;
+  transition: all 0.2s;
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+
+.filter-btn:hover {
+  background: rgba(255,255,255,0.08);
+  color: white;
+}
+
+.filter-btn.active-americano {
+  background: var(--azul);
+  border-color: var(--azul);
+  color: white;
+}
+
+.filter-btn.active-flag {
+  background: var(--flag-accent);
+  border-color: var(--flag-accent);
+  color: white;
+}

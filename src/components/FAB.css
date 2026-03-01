@@ -1,0 +1,57 @@
+.fab {
+  position: fixed;
+  bottom: 2rem;
+  right: 2rem;
+  z-index: 100;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 0.6rem;
+}
+
+.fab-btn {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  color: white;
+  border: none;
+  border-radius: 100px;
+  padding: 0.72rem 1.3rem;
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 700;
+  font-size: 0.82rem;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.fab-admin {
+  background: var(--azul);
+  box-shadow: 0 8px 30px rgba(11,85,173,0.45);
+}
+
+.fab-admin:hover {
+  background: var(--azul-light);
+  transform: translateY(-2px);
+}
+
+.fab-add {
+  background: var(--azul);
+  box-shadow: 0 8px 30px rgba(11,85,173,0.45);
+}
+
+.fab-add:hover {
+  background: var(--azul-light);
+  transform: translateY(-2px);
+}
+
+.fab-logout {
+  background: rgba(11,85,173,0.2);
+  border: 1px solid rgba(11,85,173,0.35);
+  font-size: 0.75rem;
+  padding: 0.55rem 1rem;
+}
+
+.fab-logout:hover {
+  background: rgba(180,40,40,0.25);
+  border-color: rgba(180,40,40,0.4);
+}

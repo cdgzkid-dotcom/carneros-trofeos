@@ -1,0 +1,135 @@
+/* ─── BRAND VARIABLES (Carneros Football Club 2025) ─── */
+:root {
+  --azul: #0B55AD;
+  --azul-dark: #073a78;
+  --azul-light: #1a6fd4;
+  --gris: #5B5B5B;
+  --blanco: #ffffff;
+  --oro: #C9A84C;
+  --bg: #06152e;
+  --bg2: #0a1f45;
+  --card-bg: rgba(11,85,173,0.10);
+  --card-border: rgba(11,85,173,0.30);
+  --flag-accent: #28a870;
+  --flag-bg: rgba(40,168,112,0.10);
+  --flag-border: rgba(40,168,112,0.30);
+}
+
+/* ─── RESET ─── */
+*, *::before, *::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* ─── BASE ─── */
+body {
+  font-family: 'Montserrat', sans-serif;
+  background: var(--bg);
+  color: var(--blanco);
+  min-height: 100vh;
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* ─── BACKGROUND EFFECTS ─── */
+body::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  background:
+    radial-gradient(ellipse 80% 50% at 50% -5%, rgba(11,85,173,0.35) 0%, transparent 65%),
+    radial-gradient(ellipse 40% 40% at 90% 85%, rgba(11,85,173,0.12) 0%, transparent 60%);
+  pointer-events: none;
+  z-index: 0;
+}
+
+body::after {
+  content: '';
+  position: fixed;
+  inset: 0;
+  background-image:
+    linear-gradient(rgba(11,85,173,0.05) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(11,85,173,0.05) 1px, transparent 1px);
+  background-size: 60px 60px;
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* ─── TYPOGRAPHY ─── */
+h1, h2, h3 {
+  line-height: 1;
+}
+
+/* ─── SHARED ANIMATIONS ─── */
+@keyframes glowPulse {
+  0%, 100% { box-shadow: 0 0 40px rgba(11,85,173,0.5), 0 0 80px rgba(11,85,173,0.15); }
+  50%       { box-shadow: 0 0 65px rgba(11,85,173,0.8), 0 0 120px rgba(11,85,173,0.3); }
+}
+
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(28px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes slideUp {
+  from { opacity: 0; transform: translateY(40px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+/* ─── FORM ELEMENTS RESET ─── */
+input[type="text"],
+input[type="number"],
+input[type="password"],
+textarea,
+select {
+  width: 100%;
+  background: rgba(11,85,173,0.1);
+  border: 1px solid rgba(11,85,173,0.28);
+  border-radius: 10px;
+  padding: 0.7rem 1rem;
+  color: white;
+  font-family: 'Montserrat', sans-serif;
+  font-size: 0.88rem;
+  outline: none;
+  transition: border-color 0.2s, background 0.2s;
+}
+
+input:focus,
+textarea:focus,
+select:focus {
+  border-color: var(--azul);
+  background: rgba(11,85,173,0.18);
+}
+
+select option {
+  background: #0a1a3a;
+}
+
+textarea {
+  resize: vertical;
+  min-height: 80px;
+}
+
+label {
+  display: block;
+  font-size: 0.68rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: rgba(255,255,255,0.45);
+  margin-bottom: 0.42rem;
+}
+
+/* ─── SCROLLBAR HIDE UTILITY ─── */
+.scrollbar-hide {
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+.scrollbar-hide::-webkit-scrollbar {
+  display: none;
+}
+
+/* ─── RESPONSIVE BREAKPOINTS NOTE ─── */
+/* mobile: <640px | tablet: 640–1024px | desktop: 1024px+ */

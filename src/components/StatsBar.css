@@ -1,0 +1,44 @@
+.stats-bar {
+  position: relative;
+  z-index: 10;
+  display: flex;
+  justify-content: center;
+  border-bottom: 1px solid rgba(11,85,173,0.2);
+  flex-wrap: wrap;
+}
+
+.stat {
+  text-align: center;
+  padding: 1.4rem 2.2rem;
+  border-right: 1px solid rgba(11,85,173,0.15);
+  flex: 1;
+  min-width: 90px;
+}
+
+.stat:last-child {
+  border-right: none;
+}
+
+.stat-num {
+  font-family: 'Bebas Neue', cursive;
+  font-size: 2.4rem;
+  color: var(--oro);
+  display: block;
+  line-height: 1;
+}
+
+.stat-label {
+  font-size: 0.65rem;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  color: rgba(255,255,255,0.4);
+  font-weight: 700;
+  margin-top: 0.2rem;
+  display: block;
+}
+
+@media (max-width: 640px) {
+  .stat {
+    padding: 1.2rem 1rem;
+  }
+}

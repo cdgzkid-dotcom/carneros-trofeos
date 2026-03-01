@@ -1,0 +1,39 @@
+.discipline-tabs {
+  position: relative;
+  z-index: 10;
+  display: flex;
+  max-width: 520px;
+  margin: 2.5rem auto 0;
+  background: rgba(0,0,0,0.3);
+  border: 1px solid rgba(11,85,173,0.25);
+  border-radius: 16px;
+  overflow: hidden;
+  padding: 5px;
+  gap: 4px;
+}
+
+.disc-tab {
+  flex: 1;
+  padding: 0.85rem 1rem;
+  font-family: 'Bebas Neue', cursive;
+  font-size: 1.05rem;
+  letter-spacing: 0.07em;
+  border: none;
+  background: transparent;
+  color: rgba(255,255,255,0.4);
+  cursor: pointer;
+  border-radius: 12px;
+  transition: all 0.25s;
+}
+
+.disc-tab.active-americano {
+  background: var(--azul);
+  color: white;
+  box-shadow: 0 4px 20px rgba(11,85,173,0.5);
+}
+
+.disc-tab.active-flag {
+  background: var(--flag-accent);
+  color: white;
+  box-shadow: 0 4px 20px rgba(40,168,112,0.5);
+}

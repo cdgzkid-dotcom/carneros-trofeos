@@ -1,0 +1,79 @@
+.login-box {
+  max-width: 360px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.login-icon {
+  font-size: 2.8rem;
+  margin-bottom: 1rem;
+}
+
+.login-box h2 {
+  font-family: 'Bebas Neue', cursive;
+  font-size: 1.9rem;
+  margin-bottom: 0.3rem;
+}
+
+.login-sub {
+  font-size: 0.78rem;
+  color: rgba(255,255,255,0.4);
+  margin-bottom: 1.5rem;
+}
+
+.login-error {
+  font-size: 0.77rem;
+  color: #ff7070;
+  margin-top: 0.75rem;
+}
+
+.login-hint {
+  margin-top: 1.5rem;
+  font-size: 0.7rem;
+  color: rgba(255,255,255,0.22);
+}
+
+.login-hint strong {
+  color: rgba(255,255,255,0.38);
+}
+
+/* ─── SHARED FORM STYLES (usados en modales) ─── */
+.form-group {
+  margin-bottom: 1.1rem;
+  text-align: left;
+}
+
+.form-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+}
+
+@media (max-width: 640px) {
+  .form-row {
+    grid-template-columns: 1fr;
+  }
+}
+
+.btn-primary {
+  width: 100%;
+  padding: 0.88rem;
+  color: white;
+  border: none;
+  border-radius: 12px;
+  font-family: 'Bebas Neue', cursive;
+  font-size: 1.2rem;
+  letter-spacing: 0.1em;
+  cursor: pointer;
+  transition: all 0.2s;
+  margin-top: 0.5rem;
+}
+
+.btn-primary:hover {
+  transform: translateY(-2px);
+}
+
+.btn-primary.am-mode { background: var(--azul); }
+.btn-primary.am-mode:hover { background: var(--azul-light); }
+.btn-primary.flag-mode { background: var(--flag-accent); }
+.btn-primary.flag-mode:hover { background: #34c987; }

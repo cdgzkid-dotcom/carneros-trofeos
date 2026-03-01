@@ -1,0 +1,19 @@
+.site-footer {
+  position: relative;
+  z-index: 10;
+  text-align: center;
+  padding: 3rem 2rem;
+  border-top: 1px solid rgba(11,85,173,0.18);
+  margin-top: 4rem;
+}
+
+.site-footer p {
+  font-size: 0.72rem;
+  color: rgba(255,255,255,0.22);
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+.site-footer p + p {
+  margin-top: 0.4rem;
+}
