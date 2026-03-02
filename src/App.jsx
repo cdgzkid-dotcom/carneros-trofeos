@@ -26,7 +26,9 @@ export default function App() {
   const [modal,       setModal]       = useState(null); // 'login' | 'form' | null
   const [editTarget,  setEditTarget]  = useState(null); // Trophy | null
 
-  const toastTimer = useRef(null);
+  const toastTimer   = useRef(null);
+  const editTargetRef = useRef(null);
+  editTargetRef.current = editTarget;
 
   // ── Derivado ──
   const filtered = useMemo(
@@ -75,8 +77,10 @@ export default function App() {
   }, [deleteTrophy, showToast]);
 
   const handleSave = useCallback((formData) => {
-    if (editTarget) {
-      updateTrophy({ ...formData, id: editTarget.id });
+    // Leer editTarget desde ref para evitar closures stale
+    const target = editTargetRef.current;
+    if (target) {
+      updateTrophy({ ...formData, id: target.id });
       showToast('✅ Trofeo actualizado', formData.discipline === 'flag' ? 'fl' : 'am');
     } else {
       addTrophy(formData);
@@ -89,7 +93,7 @@ export default function App() {
     }
     setModal(null);
     setEditTarget(null);
-  }, [editTarget, updateTrophy, addTrophy, showToast, discipline]);
+  }, [updateTrophy, addTrophy, showToast, discipline]);
 
   const handleCloseModal = useCallback(() => {
     setModal(null);
