@@ -95,16 +95,26 @@ export default function App() {
   const handleSave = useCallback((formData) => {
     // Leer editTarget desde ref para evitar closures stale
     const target = editTargetRef.current;
+    const disc = formData.discipline === 'flag' ? 'fl' : 'am';
+
     if (target) {
-      updateTrophy({ ...formData, id: target.id });
-      showToast('✅ Trofeo actualizado', formData.discipline === 'flag' ? 'fl' : 'am');
+      const ok = updateTrophy({ ...formData, id: target.id });
+      if (ok) {
+        showToast('✅ Trofeo actualizado', disc);
+      } else {
+        showToast('❌ Sin espacio — elimina una foto o trofeo', 'am');
+      }
     } else {
-      addTrophy(formData);
-      showToast('🏆 Trofeo agregado', formData.discipline === 'flag' ? 'fl' : 'am');
-      // Auto-switch a la disciplina del trofeo guardado
-      if (formData.discipline !== discipline) {
-        setDiscipline(formData.discipline);
-        setFilter('all');
+      const ok = addTrophy(formData);
+      if (ok) {
+        showToast('🏆 Trofeo agregado', disc);
+        // Auto-switch a la disciplina del trofeo guardado
+        if (formData.discipline !== discipline) {
+          setDiscipline(formData.discipline);
+          setFilter('all');
+        }
+      } else {
+        showToast('❌ Sin espacio — elimina una foto o trofeo', 'am');
       }
     }
     setModal(null);
