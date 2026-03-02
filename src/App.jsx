@@ -1,4 +1,4 @@
-import { useState, useMemo, useCallback, useRef } from 'react';
+import { useState, useMemo, useCallback, useRef, useEffect } from 'react';
 import { useTrophies } from './hooks/useTrophies';
 import { filterTrophies } from './utils/filters';
 
@@ -33,6 +33,14 @@ export default function App() {
   const editTargetRef = useRef(null);
   editTargetRef.current = editTarget;
 
+  // ── Auto-login en /admin ──
+  // Al montar, si estamos en /admin y no hay sesión, abrir modal de login directamente
+  useEffect(() => {
+    if (isAdminRoute && !isAdmin) {
+      setModal('login');
+    }
+  }, []); // eslint-disable-line react-hooks/exhaustive-deps
+
   // ── Derivado ──
   const filtered = useMemo(
     () => filterTrophies(trophies, discipline, filter),
@@ -60,8 +68,13 @@ export default function App() {
 
   const handleLogout = useCallback(() => {
     setIsAdmin(false);
-    showToast('👋 Sesión cerrada', 'am');
-  }, [showToast]);
+    // En /admin, redirigir a la vista pública tras cerrar sesión
+    if (isAdminRoute) {
+      window.location.href = '/';
+    } else {
+      showToast('👋 Sesión cerrada', 'am');
+    }
+  }, [showToast]); // isAdminRoute es constante en el ciclo de vida
 
   const handleOpenAdd = useCallback(() => {
     setEditTarget(null);
@@ -101,7 +114,11 @@ export default function App() {
   const handleCloseModal = useCallback(() => {
     setModal(null);
     setEditTarget(null);
-  }, []);
+    // Si cierra el login sin autenticarse en /admin, redirigir a la vista pública
+    if (isAdminRoute && !isAdmin) {
+      window.location.href = '/';
+    }
+  }, [isAdmin]); // isAdminRoute es constante
 
   return (
     <>
@@ -129,7 +146,7 @@ export default function App() {
 
       <Footer />
 
-      {isAdminRoute && (
+      {isAdminRoute && isAdmin && (
         <FAB
           isAdmin={isAdmin}
           onLoginClick={() => setModal('login')}
