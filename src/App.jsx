@@ -15,6 +15,9 @@ import LoginModal      from './components/modals/LoginModal';
 import TrophyFormModal from './components/modals/TrophyFormModal';
 
 export default function App() {
+  // ── Ruta ──
+  const isAdminRoute = window.location.pathname.startsWith('/admin');
+
   // ── Datos ──
   const { trophies, addTrophy, updateTrophy, deleteTrophy } = useTrophies();
 
@@ -102,7 +105,7 @@ export default function App() {
 
   return (
     <>
-      <AdminBadge isAdmin={isAdmin} />
+      {isAdminRoute && <AdminBadge isAdmin={isAdmin} />}
 
       <Header />
 
@@ -119,27 +122,31 @@ export default function App() {
       <TrophyGrid
         trophies={filtered}
         discipline={discipline}
-        isAdmin={isAdmin}
+        isAdmin={isAdmin && isAdminRoute}
         onEdit={handleOpenEdit}
         onDelete={handleDelete}
       />
 
       <Footer />
 
-      <FAB
-        isAdmin={isAdmin}
-        onLoginClick={() => setModal('login')}
-        onAdd={handleOpenAdd}
-        onLogout={handleLogout}
-      />
+      {isAdminRoute && (
+        <FAB
+          isAdmin={isAdmin}
+          onLoginClick={() => setModal('login')}
+          onAdd={handleOpenAdd}
+          onLogout={handleLogout}
+        />
+      )}
 
       <Toast toast={toast} />
 
-      <LoginModal
-        isOpen={modal === 'login'}
-        onLogin={handleLogin}
-        onClose={handleCloseModal}
-      />
+      {isAdminRoute && (
+        <LoginModal
+          isOpen={modal === 'login'}
+          onLogin={handleLogin}
+          onClose={handleCloseModal}
+        />
+      )}
 
       <TrophyFormModal
         isOpen={modal === 'form'}
