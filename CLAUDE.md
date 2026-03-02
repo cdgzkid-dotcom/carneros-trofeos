@@ -266,3 +266,60 @@ Al terminar cada fase o tarea, responder con:
 ✅ Listo
 [Resumen de una línea de lo que se completó]
 ```
+
+---
+
+## QA — Estado al cierre del proyecto (2026-03-01)
+
+### Build
+- `npm run build` sin errores ni warnings ✅
+
+### Funcionalidad Core — verificado en Chrome
+| Check | Estado |
+|---|---|
+| Seed carga en primera visita | ✅ |
+| Seed NO recarga si hay datos | ✅ |
+| Stats son globales (no filtradas) | ✅ |
+| Cambiar tab → filtro resetea a "Todos" | ✅ |
+| Cards ordenadas año DESC | ✅ |
+| CRUD completo persiste tras F5 | ✅ |
+| Auto-switch disciplina al agregar | ✅ |
+| Enter en password ejecuta login | ✅ |
+| Sesión se pierde al recargar | ✅ |
+| Toast aparece y desaparece en 3s | ✅ (~3700ms medido) |
+| Backdrop click y Escape cierran modales | ✅ |
+| Confirmar antes de eliminar | ✅ |
+| FAB/Badge solo visibles en /admin con sesión | ✅ |
+
+### Imágenes — verificado en Chrome
+| Check | Estado |
+|---|---|
+| Preview inmediato tras seleccionar | ✅ |
+| Warning visible >500KB | ✅ |
+| Toast de error si localStorage se llena (QuotaExceededError) | ✅ |
+| Card sin imagen muestra emoji placeholder | ✅ |
+| Quitar imagen funciona en edición | ✅ |
+
+### Responsive — verificado via CSS + Chrome DevTools
+| Breakpoint | Estado | Notas |
+|---|---|---|
+| 320px | ✅ | StatsBar 2×2 grid (@480px media query), sin overflow horizontal |
+| 375px | ✅ | Grid 1 col, filtros scroll horizontal |
+| 640px | ✅ | Filtros en wrap |
+| 1024px | ✅ | Grid 3 cols |
+| 1280px+ | ✅ | Grid 4 cols, max-width centrado |
+
+> Nota: Chrome no permite ventana <500px. Breakpoint 320/375px verificado
+> mediante análisis directo de CSS (`flex: 1 1 45%` → 2 stats por fila).
+
+### Cross-browser
+| Browser | Estado | Notas |
+|---|---|---|
+| Chrome 120+ | ✅ Verificado completo | QA completo incluyendo CRUD |
+| Safari 17+ (macOS) | ✅ Visual OK | Vista pública, /admin modal, backdrop-filter blur — CRUD no verificado (permisos de teclado bloqueados en AppleScript) |
+| Firefox | ⚠️ Pendiente | No instalado en máquina de desarrollo — riesgo bajo dado stack estándar (CSS puro, localStorage, sin APIs nativas) |
+| iOS Safari | ⚠️ Pendiente | Sin dispositivo disponible — pendiente verificación manual del cliente |
+
+### URL de producción
+**https://carneros-trofeos.vercel.app** — deploy automático en cada push a `main`
+GitHub: `https://github.com/cdgzkid-dotcom/carneros-trofeos`
